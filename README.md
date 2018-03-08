@@ -1,5 +1,5 @@
-# poc2_ListofPharmaceuticalProducts
-This is a Proof of Concept developed with Python/Django
+# poc3_ListofPharmaceuticalProducts
+This is a Proof of Concept developed with Node.js/Express
 
 # Development environment
 ```

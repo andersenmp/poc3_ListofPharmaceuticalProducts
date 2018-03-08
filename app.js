@@ -5,14 +5,37 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var exphbs = require('express-handlebars');
+var hbsHelpers = require('handlebars-helpers')
+
+
 var index = require('./routes/index');
-var users = require('./routes/users');
+var ListofPharmaceuticalProducts = require('./routes/ListofPharmaceuticalProducts');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+
+var hbs = exphbs.create({
+    extname: ".handlebars",
+    layoutsDir: path.join(__dirname, "views/layouts/"),
+    partialsDir: path.join(__dirname, 'views/partials'),
+    defaultLayout: 'main.handlebars',
+    helpers: {
+        block: function(name){
+            var blocks = this._blocks;
+            content = blocks && blocks[name];
+            return content ? content.join('\n') : null;
+        },
+        contentFor: function(name, options){
+            var blocks = this._blocks || (this._blocks = {});
+            block = blocks[name] || (blocks[name] = []); //Changed this to [] instead of {}
+            block.push(options.fn(this));
+        }
+    }
+});
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -23,7 +46,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/ListofPharmaceuticalProducts', ListofPharmaceuticalProducts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

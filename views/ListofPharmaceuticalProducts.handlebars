@@ -1,0 +1,56 @@
+<input id="recamalMedMode" value="1" type="hidden" />
+<input id="recamalHQMode" value="1" type="hidden" />
+<input id="recamaleExportExcelMode" value="1" type="hidden" />
+<input id="recamaleUsageColMode" value="1" type="hidden" />
+<input id="autoOpenMedicinesTab" value="Medicine List" type="hidden" />
+<input id="autoOpenNewMedicinesTab" value="New Medicines Proposed" type="hidden" />
+<input type="hidden" name="Medicines-List-tab" id="medicine-detail-tab" value="Medicine List" />
+<input type="hidden" name="new-medicines" id="new-medicines" value="New Medicines Proposed" />
+<meta name="csrf-token" content="">
+
+
+<ol class="breadcrumb">
+    <li><a href="/}">Home</a></li>
+    <li>CISLA</li>
+    <li class="active">List of Pharmaceutical Products</li>
+</ol>
+
+<div id="medicinesDataTabs">
+    <ul>
+        <li class="k-state-active">Pharmaceutical Products</li>
+        <li>New Pharmaceutical Products</li>
+    </ul>
+
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px; padding-top:5px;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Pharmaceutical Products</h3>
+                    </div>
+                    <div id="medicinesDataGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:0px; padding-top:5px;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List Of Pharmaceutical Products</h3>
+                    </div>
+                    <div id="approvalDataGrid"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+{{#contentFor "pageScripts"}}
+    <script src="/resources/ListofPharmaceuticalProducts/js/home.js"></script>
+{{/contentFor}}

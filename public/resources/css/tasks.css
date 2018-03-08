@@ -1,0 +1,290 @@
+#show-tasks .arrow {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 11px;
+  margin-left: 4px;
+  border-top-width: 0;
+  border-bottom-color: #999;
+  bottom: -15px;
+  opacity: 0;
+  transition: .15s;
+}
+#show-tasks.open .arrow {
+  opacity: 1;
+}
+#show-tasks .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  content: " ";
+  top: 1px;
+  margin-left: -10px;
+  border-width: 10px;
+  border-top-width: 0;
+  border-bottom-color: #F7F7F7;
+}
+
+
+.tasks-popover {
+  width: 900px;
+  top: 75px;
+  right: 5px;
+  left: auto;
+}
+.tasks-popover .row {
+  margin: 0 15px;
+}
+
+
+#tasks-tabs .tasks-list {
+  margin: 15px 15px 0;
+}
+
+#tasks {
+  max-width: inherit;
+}
+#tasks .k-content {
+  margin-bottom: 15px;
+}
+
+
+/* Tasks DropDown Styles */
+.tasks-dropdown>:first-child {
+    margin: 0 0 3px;
+    padding: 0 0 9px;
+}
+.tasks-dropdown {
+    position: absolute;
+    display: none;
+    z-index: 905;
+    top: 68px;
+    left: -510px;
+    width: 900px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-box-shadow: 0 2px 4px rgba(30, 30, 100, .25);
+    -moz-box-shadow: 0 2px 4px rgba(30, 30, 100, .25);
+    box-shadow: 0 2px 4px rgba(30, 30, 100, .25);
+    border-radius: 6px 6px 6px 6px;
+    background: #fff;
+    border: 1px solid #b3b3b3;
+}
+.tasks-dropdown:after, .tasks-dropdown:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.tasks-dropdown:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #F7F7F7;
+    border-width: 7px;
+    left: 60%;
+    margin-left: -7px;
+}
+.tasks-dropdown:before {
+    border-color: rgba(131, 131, 131, 0);
+    border-bottom-color: #838383;
+    border-width: 8px;
+    left: 60%;
+    margin-left: -8px;
+}
+.tasks-dropdown>:last-child {
+    font-size: 13px;
+    display: block;
+    padding: 5px 0;
+    line-height: 22px;
+    font-weight: 400;
+}
+.tasks-dropdown .fa-4x.fa-border {
+    border-width: 3px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    width: 46px;
+    text-align: center;
+    color: #D1D1D1;
+    border-color: #D1D1D1;
+}
+
+.tasks-dropdown ul,
+.tasks-dropdown ul li,
+.tasks-dropdown ul li a {
+  background-color: #FFFFFF;
+}
+
+.tasks-dropdown ul {
+  display: block;
+}
+
+.tasks-dropdown ul li a {
+  line-height: 1.5 !important;
+  margin: auto !important;
+  font-size: 12px;
+}
+
+.tasks-dropdown ul li a:hover {
+  background-color: #EBEBEB;
+  border-color: #EBEBEB;
+}
+
+.tasks-dropdown ul li {
+  line-height: 1 !important;
+  display: inline-block;
+  float: none !important;
+}
+
+.tasks-dropdown ul li:hover {
+  background-color: #EBEBEB;
+  border-color: #EBEBEB;
+}
+
+.tasks-dropdown ul li span:hover {
+  background-color: #EBEBEB;
+  border-color: #EBEBEB;
+}
+
+.tasks-btn-group {
+  text-align: center;
+  margin: 10px 0px;
+  padding: 0px;
+}
+
+.btn-group {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tasks-dropdown div {
+  border-bottom: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+}
+
+.tasks-dropdown h3 {
+  background-color: #F7F7F7;
+    border-bottom: 1px solid #EBEBEB;
+    border-radius: 5px 5px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0;
+    padding: 8px 14px !important;
+    color: black;
+}
+
+.tasks-btn-group button span.badge {
+  background-color: #428BCA !important;
+  margin-left: 3px;
+  padding-left: 5px !important;
+  padding-right: 6px !important;
+}
+
+.tasks-btn-group button span.red {
+  background-color: red !important;
+}
+
+.tasks-dropdown .k-grid ul  {
+}
+
+.tasks-dropdown .k-grid ul li  {
+  border-left: medium none;
+    cursor: default;
+    float: left !important;
+    font-size: 12px !important;
+    line-height: 26px !important;
+    padding: 0 !important;
+}
+
+.tasks-dropdown .k-grid ul li a {
+    font-size: 12px !important;
+    line-height: 26px !important;
+}
+
+.tasks-dropdown .k-grid ul li span:hover  {
+  background-color: #428BCA !important;
+  border-color: #428BCA !important;
+}
+
+.tasks-dropdown .k-grid {
+  border: 1px solid #CCCCCC !important;
+}
+
+.tasks-dropdown .k-grid .k-header a:hover {
+  background-color: transparent !important;
+}
+
+.tasks-details-container {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+}
+
+.tasks-details-title {
+  display: inline-block;
+  width: 20%;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.tasks-details-text {
+  display: inline-block;
+  width: 75%;
+  font-weight: normal;
+  padding: 3px;
+}
+
+.tasks-button-container {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.tasks-button-container button i {
+  top: 2px !important;
+  font-size: 14px !important;
+}
+
+#modalAddTask textarea {
+  resize: none;
+}
+
+#tasks-grid label.check {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px 4px 4px 4px;
+    clear: left;
+    color: #333333;
+    cursor: pointer;
+    float: left;
+    font-family: 'Glyphicons Halflings';
+    height: 20px !important;
+    line-height: 1;
+    margin: 4px 0 0;
+    padding: 0;
+    position: relative;
+    width: 20px !important;
+}
+
+.task-attachment-link {
+  color: #428BCA !important;
+  text-decoration: none !important;
+}
+
+.task-attachment-link:hover {
+  background-color: white !important;
+  text-decoration: underline !important;
+}

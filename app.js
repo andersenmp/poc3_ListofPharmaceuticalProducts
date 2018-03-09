@@ -5,6 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+//Sequelize ORM
+const  Sequelize = require('sequelize');
+
+const  sequelize = new Sequelize('mainDB', null, null, {
+    dialect: "sqlite",
+    storage: './database.sqlite',
+});
+
+sequelize
+    .authenticate()
+    .then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+
+//Handelbars Template Language
 var exphbs = require('express-handlebars');
 var hbsHelpers = require('handlebars-helpers')
 
@@ -44,6 +63,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', index);
 app.use('/ListofPharmaceuticalProducts', ListofPharmaceuticalProducts);

@@ -4,7 +4,7 @@ var dateFns = require('date-fns');
 var medicalList = db.MedicalList;
 
 exports.index = function(req, res) {
-    res.render('ListofPharmaceuticalProducts/index');
+    res.render('ListofPharmaceuticalProducts/index', { csrf: req.csrfToken() });
 };
 
 
@@ -102,3 +102,49 @@ exports.getMedicalListDoctor = function(req, res) {
 });
 
 };
+
+exports.updateMedicalList = function(req, res) {
+    response = {
+        'ERROR': false,
+        'TEXT': 'success'
+    };
+
+    var _id = req.body['ID'] || 0;
+
+    medicalList.findById(_id).then(row => {
+        row.update({
+            name: req.body['MEDICINE_NAME'] || '',
+            composition: req.body['COMPOSITION'] || '',
+            link: req.body['LINK'] || '',
+            reimbursible: req.body['REIMBURSIBLE'] || '',
+            comments: req.body['COMMENTS'] || '',
+            usage: req.body['USAGE'] || ''
+        }).then(() => {
+            res.send(response);
+        }).catch(error => {
+            console.log(error);
+            res.status(500).send({ ERROR: true, TEXT: 'error' })
+        });
+    });
+};
+
+exports.createMedicalList = function(req, res) {
+    response = {
+        'ERROR': false,
+        'TEXT': 'success'
+    };
+
+    medicalList.create({
+        name: req.body['MEDICINE_NAME'] || '',
+        composition: req.body['COMPOSITION'] || '',
+        link: req.body['LINK'] || '',
+        reimbursible: null,
+        comments: req.body['COMMENTS'] || '',
+        usage: req.body['USAGE'] || ''
+    }).then(() => {
+        res.send(response);
+    }).catch(error => {
+        res.status(500).send({ ERROR: true, TEXT: 'error' })
+    });
+};
+

@@ -102,21 +102,15 @@ medicineDataDS = new kendo.data.DataSource({
 		read: {
 			url: "/ListofPharmaceuticalProducts/GetMedicalList",
 			dataType: "json",
-			data: { cache: false, nocache: Math.random(), recMode: isRecamalMedMode},
+			data: { cache: false, nocache: Math.random(), recMode: isRecamalMedMode,_csrf: $('#_csrf').val()},
 			type: 'POST',
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
-            }
-		},
+        },
 		update: {
 			url: "/ListofPharmaceuticalProducts/UpdateMedicalList",
 			dataType: "json",
 			type: 'POST',
-			data: { cache: false, nocache: Math.random(), recMode: isRecamalMedMode},
-			beforeSend: function (xhr) {
-				xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
-			},
-			complete: function (e,data) { 
+			data: { cache: false, nocache: Math.random(), recMode: isRecamalMedMode,_csrf: $('#_csrf').val()},
+			complete: function (e,data) {
 		                _updateMedicine(e,data);	
 			     	}
 		},
@@ -124,10 +118,7 @@ medicineDataDS = new kendo.data.DataSource({
 			url: "/ListofPharmaceuticalProducts/CreateMedicalList",
 			dataType: "json",
 			type: 'POST',
-            data: { cache: false, nocache: Math.random(), recMode: isRecamalMedMode},
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
-            },
+            data: { cache: false, nocache: Math.random(), recMode: isRecamalMedMode,_csrf: $('#_csrf').val()},
 		    complete: function (e,data) {
 				_addNewMedicine(e);	               
 		     }
@@ -176,20 +167,14 @@ doctorsAppDataDS = new kendo.data.DataSource({
 		read: {
 			url: "/ListofPharmaceuticalProducts/GetMedicalListDoctor",
 			dataType: "json",
-			data: { cache: false, nocache: Math.random(), recMode: isRecamalHQMode},
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
-            },
+			data: { cache: false, nocache: Math.random(), recMode: isRecamalHQMode,_csrf: $('#_csrf').val()},
 			type: 'POST'
 		},
 		update: {
  			url: "/ListofPharmaceuticalProducts/UpdateMedicalList",
 			dataType: "json",
 			type: 'POST',
-            data: { cache: false, nocache: Math.random(), recMode: isRecamalHQMode},
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
-            },
+            data: { cache: false, nocache: Math.random(), recMode: isRecamalHQMode,_csrf: $('#_csrf').val()},
 		    complete: function (e,data) { 
 	                _updateMedicine(e);
 		     }

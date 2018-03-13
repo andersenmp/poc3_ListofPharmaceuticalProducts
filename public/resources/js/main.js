@@ -126,5 +126,3 @@ if ($.cookie('stickymenu') == 'false') {
   body.removeClass('stickymenu');
 }
 
-
-

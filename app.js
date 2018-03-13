@@ -68,17 +68,75 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use( session({
+    key: 'user_sid',
     secret            : 'super secret key',
-    resave            : false,
-    saveUninitialized : true
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000
+    }
 }));
 app.use(csrf());
 
 
+var userRegistration = function (req, res, next) {
 
+    if(req.session.cas_user && !req.session.logged){
+        var  db = require('./models');
+        var User = db.User;
+
+        /*User.findOrCreate({
+            where:{username:req.session.cas_user},
+            defaults: {
+                firstName: req.session.cas_user,
+                lastName: 'Not in Sentry',
+                email: 'email@not.registred.com',
+            }
+        }).spread((user, created) => {
+            req.session.user = user.get({plain: true});
+            console.log(req.session.user.username)
+        });*/
+
+
+        User.findOne({ where:{username:req.session.cas_user}})
+            .then(function (user) {
+                if (!user) {
+                    User.create(
+                        {
+                            username:req.session.cas_user,
+                            firstName: req.session.cas_user,
+                            lastName: 'Not in Sentry',
+                            email: 'email@not.registred.com',
+                        }
+                    ).then(function (user){
+                        req.session.user = user.dataValues;
+                    })
+                 }else{
+                    req.session.user = user.dataValues;
+                }
+            });
+
+
+            req.session.logged = true
+    }
+    next()
+}
+
+
+app.use(userRegistration)
+
+var propagateSession = function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+}
+
+app.use(propagateSession)
 
 app.use('/', index);
 app.use('/ListofPharmaceuticalProducts', ListofPharmaceuticalProducts);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

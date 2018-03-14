@@ -29,14 +29,16 @@ module.exports = {
       org_id: {
         type: Sequelize.STRING
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+        createdAt: {
+            allowNull: false,
+            type: Sequelize.DATE,
+            defaultValue: new Date()
+        },
+        updatedAt: {
+            allowNull: false,
+            type: Sequelize.DATE,
+            defaultValue: new Date()
+        }
     });
   },
   down: (queryInterface, Sequelize) => {

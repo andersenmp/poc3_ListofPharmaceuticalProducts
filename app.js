@@ -85,19 +85,6 @@ var userRegistration = function (req, res, next) {
         var  db = require('./models');
         var User = db.User;
 
-        /*User.findOrCreate({
-            where:{username:req.session.cas_user},
-            defaults: {
-                firstName: req.session.cas_user,
-                lastName: 'Not in Sentry',
-                email: 'email@not.registred.com',
-            }
-        }).spread((user, created) => {
-            req.session.user = user.get({plain: true});
-            console.log(req.session.user.username)
-        });*/
-
-
         User.findOne({ where:{username:req.session.cas_user}})
             .then(function (user) {
                 if (!user) {

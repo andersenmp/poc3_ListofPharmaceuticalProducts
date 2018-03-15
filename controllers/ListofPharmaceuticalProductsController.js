@@ -37,7 +37,7 @@ exports.getMedicalList = function(req, res) {
                         'ID': row.id,
                         'MEDICINE_NAME': row.name,
                         'COMPOSITION': row.composition,
-                        'APP_DATE': dateFns.format(row.app_date,'DD/MM/YYYY'),
+                        'APP_DATE': dateFns.format(row.createdAt,'DD/MM/YYYY'),
                         'LINK': row.link,
                         'REIMBURSIBLE': row.reimbursible,
                         'COMMENTS': row.comments,
@@ -68,6 +68,7 @@ exports.getMedicalListDoctor = function(req, res) {
     var items = [];
 
     var querySet = medicalList.findAll({
+        include: [{ model: db.User }],
         order: [[sortname,sortdir]],
         where: {
             reimbursible: {
@@ -85,11 +86,12 @@ exports.getMedicalListDoctor = function(req, res) {
                 'ID': row.id,
                 'MEDICINE_NAME': row.name,
                 'COMPOSITION': row.composition,
-                'APP_DATE': dateFns.format(row.app_date,'DD/MM/YYYY'),
+                'APP_DATE': dateFns.format(row.createdAt,'DD/MM/YYYY'),
                 'LINK': row.link,
                 'REIMBURSIBLE': row.reimbursible,
                 'COMMENTS': row.comments,
-                'USAGE': row.usage
+                'USAGE': row.usage,
+                'REQUESTED_BY': row.User.firstName+''+row.User.lastName
             });
     });
 
@@ -134,13 +136,15 @@ exports.createMedicalList = function(req, res) {
         'TEXT': 'success'
     };
 
+
     medicalList.create({
         name: req.body['MEDICINE_NAME'] || '',
         composition: req.body['COMPOSITION'] || '',
         link: req.body['LINK'] || '',
         reimbursible: null,
         comments: req.body['COMMENTS'] || '',
-        usage: req.body['USAGE'] || ''
+        usage: req.body['USAGE'] || '',
+        UserId: req.session.user.id
     }).then(() => {
         res.send(response);
     }).catch(error => {

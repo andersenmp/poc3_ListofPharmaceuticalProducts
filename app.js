@@ -119,6 +119,26 @@ var propagateSession = function (req, res, next) {
 
 app.use(propagateSession)
 
+
+var testSession = function (req, res, next) {
+
+    var SentryUtils = require('./Library/SentryUtils')
+
+    if(req.session.cas_user) {
+        var sentry = new SentryUtils(req.session.cas_user)
+        sentry.hasAccessToFeature('/ADMINISTRATOR').then(function(x) {
+            console.log('hasAccessToFeature');
+            console.log(x)
+        })
+    }
+    next();
+}
+
+app.use(testSession)
+
+
+
+
 app.use('/', index);
 app.use('/ListofPharmaceuticalProducts', ListofPharmaceuticalProducts);
 

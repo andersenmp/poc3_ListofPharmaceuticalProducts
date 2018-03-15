@@ -15,6 +15,7 @@ module.exports = {
         comments: { type: Sequelize.STRING(250), allowNull: true },
         link: { type: Sequelize.STRING(250), allowNull: true },
         app_date: { type: Sequelize.DATE, defaultValue: new Date() },
+        UserId: { type: Sequelize.INTEGER },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

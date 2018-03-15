@@ -34,4 +34,8 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 db.Op = Sequelize.Op;
 
+
+//Relations
+db.MedicalList.belongsTo(db.User,{foreignKey: 'UserId'});
+
 module.exports = db;

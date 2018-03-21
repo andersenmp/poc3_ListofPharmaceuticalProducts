@@ -9,5 +9,25 @@ npm 5.6.0
 
 # Install
 ```
+$ git clone https://github.com/andersenmp/poc3_ListofPharmaceuticalProducts.git
 
+```
+
+# Update
+```
+$ cd poc3_ListofPharmaceuticalProducts
+$ bash update_poc.sh
+```
+
+
+# Start
+```
+$ cd poc3_ListofPharmaceuticalProducts
+$ bash start_poc.sh
+```
+
+# Test
+```
+$ cd poc3_ListofPharmaceuticalProducts
+$ bash test_poc.sh
 ```

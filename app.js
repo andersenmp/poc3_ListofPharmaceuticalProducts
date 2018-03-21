@@ -120,23 +120,29 @@ var propagateSession = function (req, res, next) {
 app.use(propagateSession)
 
 
-var testSession = function (req, res, next) {
+var mainMenuSession = function (req, res, next) {
 
     var SentryUtils = require('./Library/SentryUtils')
-
+    res.locals.menu = {};
     if(req.session.cas_user) {
         var sentry = new SentryUtils(req.session.cas_user)
-        sentry.hasAccessToFeature('/ADMINISTRATOR').then(function(x) {
-            console.log('hasAccessToFeature');
-            console.log(x)
+        sentry.hasAccessToFeature('/ADMINISTRATOR').then(function (access) {
+            res.locals.menu.listofPharmaceuticalProducts = access;
         })
+    }else{
+        res.locals.menu.listofPharmaceuticalProducts = false;
     }
     next();
 }
 
-app.use(testSession)
+app.use(mainMenuSession)
 
 
+
+
+
+
+session
 
 
 app.use('/', index);

@@ -100,7 +100,7 @@
 <div id="hide-menu"></div>
 
 
-{{!--  @if(!empty($sentry_count)) --}}
+{{#if menu}}
 <nav class="main">
 <div id="sticky"><i class="glyphicon glyphicon-pushpin sticky tt" title="Make this menu sticky" data-placement="right"></i></div>
 
@@ -108,19 +108,19 @@
 <ul class="list-group">
    <li><a href="/">Home</a></li>
 
-    {{!-- @if($menu_ListofPharmaceuticalProducts) --}}
+    {{#if menu.listofPharmaceuticalProducts}}
     <li><div class="item">CISLA <b class="caret"></b></div>
         <ul>
             <li>
-                <a href="ListofPharmaceuticalProducts/">List of Pharmaceutical Products</a>
+                <a href="/ListofPharmaceuticalProducts/">List of Pharmaceutical Products</a>
                 </li>
             </ul>
         </li>
-    {{!--  @endif --}}
+    {{/if}}
 
  </ul>
 </nav>
-{{!--  @endif --}}
+{{/if}}
 
 <main class="container-fluid" ui-view>
     {{{body}}}

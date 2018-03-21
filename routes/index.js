@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var CASAuthentication = require('cas-authentication');
-var os = require('os')
 
 
 
@@ -9,7 +8,7 @@ var os = require('os')
 // Create a new instance of CASAuthentication.
 var cas = new CASAuthentication({
     cas_url         : 'https://webgate.ec.europa.eu/cas',
-    service_url     : 'http://'+os.hostname()+':8000',
+    service_url     : 'http://192.168.1.44:8000',
     cas_version     : '2.0'
 });
 

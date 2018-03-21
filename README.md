@@ -10,7 +10,10 @@ npm 5.6.0
 # Install
 ```
 $ git clone https://github.com/andersenmp/poc3_ListofPharmaceuticalProducts.git
-
+$ cd poc3_ListofPharmaceuticalProducts
+$ npm install
+$ node_modules/.bin/sequelize db:migrate
+$ node bin/www
 ```
 
 # Update

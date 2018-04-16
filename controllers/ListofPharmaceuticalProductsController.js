@@ -91,7 +91,7 @@ exports.getMedicalListDoctor = function(req, res) {
                 'REIMBURSIBLE': row.reimbursible,
                 'COMMENTS': row.comments,
                 'USAGE': row.usage,
-                'REQUESTED_BY': row.User.firstName+''+row.User.lastName
+                'REQUESTED_BY': row.User.firstName+' '+row.User.lastName
             });
     });
 

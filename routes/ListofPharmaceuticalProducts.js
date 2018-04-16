@@ -6,7 +6,8 @@ var SentryUtils = require('../Library/SentryUtils')
 // Create a new instance of CASAuthentication.
 var cas = new CASAuthentication({
     cas_url         : 'https://webgate.ec.europa.eu/cas',
-    service_url     : 'http://192.168.1.44:8000',
+    //service_url     : 'http://192.168.1.44:8000',
+    service_url     : 'http://localhost:8000',
     cas_version     : '2.0'
 });
 

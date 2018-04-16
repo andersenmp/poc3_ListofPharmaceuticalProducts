@@ -8,8 +8,6 @@ var bodyParser = require('body-parser');
 var csrf = require('csurf');
 
 
-
-
 //Sequelize ORM
 const  Sequelize = require('sequelize');
 
@@ -138,17 +136,9 @@ var mainMenuSession = function (req, res, next) {
 app.use(mainMenuSession)
 
 
-
-
-
-
-session
-
-
+//Routes
 app.use('/', index);
 app.use('/ListofPharmaceuticalProducts', ListofPharmaceuticalProducts);
-
-
 
 
 // catch 404 and forward to error handler

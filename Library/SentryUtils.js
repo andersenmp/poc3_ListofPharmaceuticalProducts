@@ -17,7 +17,8 @@ SentryUtils.prototype.hasAccessToFeature = function(feature) {
         // Do async job
         Sentry.findAll({ where: {
                         login: username,
-                        feature: {[db.Op.like]: feature}
+                        //feature: {[db.Op.like]: feature}
+                        feature: feature
                     } }).then(rows => {
             if(!rows.length){
                 resolve(false)

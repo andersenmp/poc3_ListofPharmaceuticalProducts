@@ -15,9 +15,9 @@ fi
 
 echo "ilogin = ${i}"
 
-sqlite3 database/database.sqlite "delete from sentries where login = '${i}'"
+sqlite3 database.sqlite "delete from Sentries where login = '${i}'"
 
 echo "${i} is no longer in Sentry"
 
-sqlite3 database/database.sqlite "select login, first_name, last_name, feature, access_mode from sentries where login = '${i}'"
+sqlite3 database.sqlite "select login, first_name, last_name, feature, access_mode from Sentries where login = '${i}'"
 

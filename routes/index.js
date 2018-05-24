@@ -3,11 +3,38 @@ var router = express.Router();
 var CASAuthentication = require('cas-authentication');
 
 
+var os = require('os');
+var ifaces = os.networkInterfaces();
+var ecasService_url;
+
+Object.keys(ifaces).forEach(function (ifname) {
+    var alias = 0;
+
+    ifaces[ifname].forEach(function (iface) {
+        if ('IPv4' !== iface.family || iface.internal !== false) {
+            // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+            return;
+        }
+
+        if (alias >= 1) {
+            // this single interface has multiple ipv4 addresses
+            console.log(ifname + ':' + alias, iface.address);
+        } else {
+            // this interface has only one ipv4 adress
+            console.log(ifname, iface.address);
+            ecasService_url = 'http://' + iface.address + ":8000"
+        }
+        ++alias;
+    });
+});
+
+
+
+
 // Create a new instance of CASAuthentication.
 var cas = new CASAuthentication({
     cas_url         : 'https://webgate.ec.europa.eu/cas',
-    //service_url     : 'http://192.168.1.44:8000',
-    service_url     : 'http://localhost:8000',
+    service_url     :  ecasService_url,
     cas_version     : '2.0'
 });
 

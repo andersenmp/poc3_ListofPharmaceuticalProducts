@@ -23,9 +23,9 @@ echo "ilogin = ${i}"
 echo "firstName = ${f}"
 echo "lastName = ${l}"
 
-sqlite3 database.sqlite  "insert into Sentries (login, first_name, last_name, email, feature, access_mode, createdAt, updatedAt) values ('${i}','${f}','${l}','${f}.${l}@eeas.europa.eu', '/ADMINISTRATOR','I',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)"
+sqlite3 database.sqlite  "insert into Sentries (login, firstName, lastName, email, feature, access_mode, createdAt, updatedAt) values ('${i}','${f}','${l}','${f}.${l}@eeas.europa.eu', '/ADMINISTRATOR','I',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)"
 
 echo "Records in Sentry for ${i}"
 
-sqlite3 database.sqlite "select login, first_name, last_name, email, feature, access_mode from Sentries where login = '${i}'"
+sqlite3 database.sqlite "select login, firstName, lastName, email, feature, access_mode from Sentries where login = '${i}'"
 

@@ -5,7 +5,7 @@ var CASAuthentication = require('cas-authentication');
 
 var os = require('os');
 var ifaces = os.networkInterfaces();
-var ecasService_url;
+var ecasService_url = 'http://localhost:8000';
 
 Object.keys(ifaces).forEach(function (ifname) {
     var alias = 0;
